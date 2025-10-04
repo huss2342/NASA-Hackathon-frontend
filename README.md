@@ -19,7 +19,8 @@ Players face scenarios requiring interpretation of:
 Each decision directly affects farm resources (water, money, time) and determines whether players can secure the bank loan and save the farm.
 
 ## Tech Stack
-*[React, vanilla JS, Three.js, etc.]*
+- React
+- Tailwind
 
 ## Features
 - Data visualization components for NASA datasets
