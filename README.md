@@ -22,6 +22,12 @@ Each decision directly affects farm resources (water, money, time) and determine
 - React
 - Tailwind
 
+## Running:
+```
+npm install
+npm run dev
+```
+
 ## Features
 - Data visualization components for NASA datasets
 - Narrative decision tree system
