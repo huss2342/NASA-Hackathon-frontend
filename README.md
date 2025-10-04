@@ -1,7 +1,3 @@
-For the frontend repo, I'd suggest something more tailored that focuses on the user-facing aspects and tech stack. Here's a version:
-
----
-
 # NASA Farm Navigators - Frontend
 
 ## Overview
@@ -30,5 +26,3 @@ Each decision directly affects farm resources (water, money, time) and determine
 - Narrative decision tree system
 - Resource management UI
 - Pass/fail feedback with retry mechanics
-
----
