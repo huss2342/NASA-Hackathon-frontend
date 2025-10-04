@@ -20,7 +20,7 @@ Each decision directly affects farm resources (water, money, time) and determine
 
 ## Tech Stack
 - React
-- Tailwind
+- Tailwind V3
 
 ## Features
 - Data visualization components for NASA datasets
