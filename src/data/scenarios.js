@@ -55,4 +55,16 @@ export const scenarios = {
     showInitialPopup: true,
     next: null,
   },
+
+  summary_end: {
+    id: 'summary_end',
+    type: 'game_over', // A neutral type that triggers the summary layout
+    title: 'SEASON END: YEAR ONE REPORT', 
+    canReplay: true,
+    
+    // Text that uses the scores as part of the narrative
+    text: `The first year has concluded. The rusty key proved heavy, but you unlocked a new chapter for the farm, {playerName}. 
+           <br><br>
+           The final numbers are in, reflecting your efforts to balance the land's health and the bottom line. You achieved a net gain of **$ {finalMoney}** and an environmental rating of **{finalSustainabilityScore}/100**. Your journey is just beginning.`,
+  },
 };
