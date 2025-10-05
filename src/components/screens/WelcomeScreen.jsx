@@ -20,14 +20,21 @@ const WelcomeScreen = () => {
 
   return (
     <Screen active={currentScenario === 'welcome'}>
-      <PixelBackground welcomeScreen={true} />
-      <h1 className="text-[#e94560] text-[48px] mb-10 z-[1] tracking-[2px] font-bold">
-        FARM NAVIGATORS
-      </h1>
-      <div className="z-[1] mb-[30px]">
+      <PixelBackground opacity={0.15} />
+      <h1 
+  className="text-[#e94560] text-[48px] mb-10 z-[1] tracking-[2px] font-bold"
+  style={{ fontFamily: "'Silkscreen', monospace" }}
+>
+  FARM NAVIGATORS
+</h1>
+      <div className="z-10 mb-8">
         <label 
           htmlFor="playerName" 
-          className="block text-[#f1f1f1] text-[20px] mb-2.5 [text-shadow:2px_2px_0_#16213e]"
+          className="
+            block text-[#f1f1f1] text-xl mb-2.5 
+            [text-shadow:2px_2px_0_#16213e]
+            font-['Courier_New',_monospace]
+          "
         >
           Enter Your Name:
         </label>
@@ -39,7 +46,14 @@ const WelcomeScreen = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="w-[300px] p-[15px] text-[20px] bg-[#16213e] text-[#f1f1f1] border-4 border-[#0f3460] outline-none text-center focus:border-[#e94560]"
+          className="
+            w-[300px] p-4 
+            font-['Courier_New',_monospace] text-xl 
+            bg-[#16213e] text-[#f1f1f1] 
+            border-4 border-[#0f3460] 
+            outline-none text-center
+            focus:border-[#e94560]
+          "
         />
       </div>
       <Button onClick={handleStart}>BEGIN</Button>

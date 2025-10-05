@@ -98,6 +98,15 @@ const InteractiveScreen = ({ scenario }) => {
   />
 )}
 
+    {/* Farmer gif in bottom right */}
+    {(scenario.id === 'january_intro' || scenario.id === 'spring_intro' || scenario.id === 'summer_intro') && (
+    <img 
+        src="/farmer.gif"
+        alt="Farmer"
+        className="absolute bottom-4 right-0 z-[3] w-[400px] h-[400px]"
+    />
+    )}
+
       {showResults && (
         <ResultsModal
           moneyChange={lastScores.money}
