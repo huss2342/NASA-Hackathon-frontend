@@ -3,6 +3,9 @@
 ## Overview
 An interactive story-driven game that teaches sustainable farming through NASA Earth Science data. Players interpret real satellite data to make critical decisions and save their inherited family farm.
 
+## Link to our game
+https://nasa-hackathon-frontend.vercel.app/
+
 ## User Experience
 - **Interactive narrative gameplay** with branching decision points
 - **Real-time data visualizations** of NASA satellite measurements
