@@ -2,25 +2,31 @@ export const scenarios = {
   story1: {
     id: 'story1',
     type: 'story',
-    text: `It's been a long year. In the mail you receive rusty key and a note: "The farm is yours now, dear. I know you'll bring it back to life."`,
+    text: "It's been a long year. In the mail you receive a rusty key and a note: \"The farm is yours now, dear. We had to leave in a hurry, but we believe you can bring it back to life. - Grandma & Grandpa\"",
     next: 'story2',
   },
   story2: {
     id: 'story2',
     type: 'story',
-    text: 'You have a job in New York City. A Life. You can\'t just leave that behind.',
+    text: 'You have a job in New York City. A life. An apartment. Friends. You can\'t just leave that behind... can you?',
     next: 'story3',
   },
   story3: {
     id: 'story3',
     type: 'story',
-    text: 'But you remember the summers at the farm as a child...the smell of fresh soil, the satisfaction of harvest. But that was a long time ago.',
+    text: 'But you remember those magical summers at the farm as a child—the smell of fresh soil, your grandmother\'s laughter in the kitchen, helping grandpa repair the old tractor. That connection to the land... to them.',
     next: 'story4',
   },
   story4: {
     id: 'story4',
     type: 'story',
-    text: '"What if...?" You think to yourself. You have a chance to start over, to build something real... <br><br>Welcome home, <span style="color: #4ecca3;">{playerName}</span>.',
+    text: 'The note didn\'t say where they went or why. Just that they trusted you to make the farm thrive again—sustainably, the way they always did. <br><br>"What if...?" you whisper to yourself. A chance to start over. To build something real. To maybe understand what happened...',
+    next: 'story5',
+  },
+  story5: {
+    id: 'story5',
+    type: 'story',
+    text: 'Welcome home, <span style="color: #4ecca3;">{playerName}</span>. <br><br>The farm awaits. And perhaps, if you restore it to its former glory, your grandparents will find their way back too.',
     next: 'january_intro',
   },
 
