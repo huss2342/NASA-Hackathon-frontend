@@ -1,5 +1,5 @@
 const PixelBackground = ({ opacity = 1, welcomeScreen = false, customBackground = null }) => {
-  const backgroundImage = customBackground || '/sprites/start_screen.png';
+  const backgroundImage = customBackground || '/start_screen.png';
   
   return (
     <>

@@ -28,8 +28,8 @@ export const scenarios = {
   january_intro: {
     id: 'january_intro',
     type: 'story',
-    background: '/sprites/winter.png',
-    header: '/images/winter_header.png',
+    background: '/winter.png',
+    header: '/winter_header.png',
     text: `It's January in Monterey, California. The new year has just begun, and your fields stretch close to the coast, just a few feet above sea level. The weather has been strange over the last few winters. You open the NASA Flooding Analysis Tool to check the projected flooding for January.`,
     next: 'january_params',
   },
@@ -37,8 +37,8 @@ export const scenarios = {
   january_params: {
     id: 'january_params',
     type: 'story',
-    background: '/sprites/winter.png',
-    header: '/images/winter_header.png',
+    background: '/winter.png',
+    header: '/winter_header.png',
     text: `You set up the parameters for the analysis:`,
     bulletPoints: [
       'Location: Monterey, CA',
@@ -51,8 +51,8 @@ export const scenarios = {
   interpret_graph: {
     id: 'interpret_graph',
     type: 'story',
-    background: '/sprites/winter.png',
-    header: '/images/winter_header.png',
+    background: '/winter.png',
+    header: '/winter_header.png',
     text: 'For January, the tool shows a median of 3 flooding days.',
     next: 'flood_decision',
   },
@@ -60,8 +60,8 @@ export const scenarios = {
   flood_decision: {
     id: 'flood_decision',
     type: 'decision',
-    background: '/sprites/winter.png',
-    header: '/images/winter_header.png',
+    background: '/winter.png',
+    header: '/winter_header.png',
     title: 'Flooding Decision',
     description: 'Do you prepare the farm for possible flooding?',
     choices: [
@@ -81,8 +81,8 @@ export const scenarios = {
   prepare_choice: {
     id: 'prepare_choice',
     type: 'decision',
-    background: '/sprites/winter.png',
-    header: '/images/winter_header.png',
+    background: '/winter.png',
+    header: '/winter_header.png',
     title: 'Equipment Protection',
     description: 'Are you moving your equipment, tools, and seedlings to an elevated area to avoid water damage?',
     choices: [
@@ -102,8 +102,8 @@ export const scenarios = {
   prepare_outcome: {
     id: 'prepare_outcome',
     type: 'story',
-    background: '/sprites/winter.png',
-    header: '/images/winter_header.png',
+    background: '/winter.png',
+    header: '/winter_header.png',
     text: `On January 14th, the rains come. Your preparations pay off: the fields stay mostly dry, and your crops survive. NASA's prediction was right.`,
     next: null, // End of scenario for now
   },
@@ -111,8 +111,8 @@ export const scenarios = {
   ignore_consequence: {
     id: 'ignore_consequence',
     type: 'story',
-    background: '/sprites/winter.png',
-    header: '/images/winter_header.png',
+    background: '/winter.png',
+    header: '/winter_header.png',
     text: `You decide it's not worth the expense. On January 14th, a storm hits the coast. The fields flood, damaging equipment, tools, and seedlings.`,
     next: null, // Could link to retry or next level
   },
