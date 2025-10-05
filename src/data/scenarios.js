@@ -52,18 +52,21 @@ export const scenarios = {
     text: `It's mid-spring—April—and your almond trees are waking up from their winter sleep. They're entering their critical bloom and early fruit development stage, which means they're hungry for water. Problem is, the winter rains were pretty weak this year. Drought is always lurking in California, and you need to know what's actually happening beneath the surface.`,
     showComputer: true,
     showInitialPopup: true,
-    next: null,
+    next: "summer_intro",
   },
 
-  summary_end: {
-    id: 'summary_end',
-    type: 'game_over', // A neutral type that triggers the summary layout
-    title: 'SEASON END: YEAR ONE REPORT', 
-    canReplay: true,
-    
-    // Text that uses the scores as part of the narrative
-    text: `The first year has concluded. The rusty key proved heavy, but you unlocked a new chapter for the farm, {playerName}. 
-           <br><br>
-           The final numbers are in, reflecting your efforts to balance the land's health and the bottom line. You achieved a net gain of **$ {finalMoney}** and an environmental rating of **{finalSustainabilityScore}/100**. Your journey is just beginning.`,
-  },
-};
+summer_intro: {
+  id: 'summer_intro',
+  type: 'interactive',
+  background: '/summer.png',
+  header: '/summer_header.png',
+  topRightImage: '/sun.png',
+  rotateTopRight: true,
+  text: `It's peak summer, July—and the heat is relentless. Walking through your almond orchard, you can feel the warmth radiating from the soil itself. The air feels thick, and you're worried about heat stress damaging the trees during this critical fruit development period.\n\nLocal air temperature readings don't tell the whole story. What matters is the Land Surface Temperature (LST)—the actual temperature of the canopy and soil surface where your trees are working hardest.`,
+  showComputer: true,
+  showInitialPopup: true,
+  next: null,
+}
+
+
+}
