@@ -3,18 +3,30 @@ export const scenarios = {
     id: 'story1',
     type: 'story',
     text: "It's been a long year. In the mail you receive a rusty key and a note: \"The farm is yours now, dear. We had to leave in a hurry, but we believe you can bring it back to life. - Grandma & Grandpa\"",
+    image:'/public/letter.gif',
+    splitLayout: true,
     next: 'story2',
   },
   story2: {
     id: 'story2',
     type: 'story',
     text: 'You have a job in New York City. A life. An apartment. Friends. You can\'t just leave that behind... can you?',
+    image:'city.gif',
+    imageBottom: 1,    // 20px from bottom
+    imageRight: 1,     // 20px from right
+    imageWidth: 1000,    // adjust size as needed
     next: 'story3',
   },
   story3: {
     id: 'story3',
     type: 'story',
     text: 'But you remember those magical summers at the farm as a child—the smell of fresh soil, your grandmother\'s laughter in the kitchen, helping grandpa repair the old tractor. That connection to the land... to them.',
+    images: ['grandma.gif', 'grandpa.webp'],  // Array of images to crossfade
+    fadeDuration: 2,  // seconds per image (optional, defaults to 4)
+    imageBottom: 50,
+    imageRight: 50,
+    imageWidth: 300,
+    imageHeight:300,
     next: 'story4',
   },
   story4: {
@@ -27,6 +39,10 @@ export const scenarios = {
     id: 'story5',
     type: 'story',
     text: 'Welcome home, <span style="color: #4ecca3;">{playerName}</span>. <br><br>The farm awaits. And perhaps, if you restore it to its former glory, your grandparents will find their way back too.',
+    image:'grandparents.gif',
+    imageBottom: 1,    // 20px from bottom
+    imageRight: 1,     // 20px from right
+    imageWidth: 500,    // adjust size as needed
     next: 'january_intro',
   },
 
