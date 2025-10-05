@@ -24,96 +24,29 @@ export const scenarios = {
     next: 'january_intro',
   },
 
-  // Flood Scenario
+  // Interactive January scenario
   january_intro: {
     id: 'january_intro',
-    type: 'story',
+    type: 'interactive',
     background: '/winter.png',
     header: '/winter_header.png',
-    text: `It's January in Monterey, California. The new year has just begun, and your fields stretch close to the coast, just a few feet above sea level. The weather has been strange over the last few winters. You open the NASA Flooding Analysis Tool to check the projected flooding for January.`,
-    next: 'january_params',
+    text: `It's January in Monterey, California. The new year has just begun, and your fields stretch close to the coast, just a few feet above sea level. The weather has been strange over the last few winters.`,
+    showComputer: true,
+    showInitialPopup: true,
+    next: 'spring_intro',
   },
 
-  january_params: {
-    id: 'january_params',
-    type: 'story',
-    background: '/winter.png',
-    header: '/winter_header.png',
-    text: `You set up the parameters for the analysis:`,
-    bulletPoints: [
-      'Location: Monterey, CA',
-      'Flooding Threshold: 1.51 ft above MHHW (at this level, water could start reaching your fields, damaging crops and equipment)',
-      'Scenario: Intermediate U.S. Interagency Sea Level Rise projection (cautious, but not extreme)'
-    ],
-    next: 'interpret_graph',
-  },
-
-  interpret_graph: {
-    id: 'interpret_graph',
-    type: 'story',
-    background: '/winter.png',
-    header: '/winter_header.png',
-    text: 'For January, the tool shows a median of 3 flooding days.',
-    next: 'flood_decision',
-  },
-
-  flood_decision: {
-    id: 'flood_decision',
-    type: 'decision',
-    background: '/winter.png',
-    header: '/winter_header.png',
-    title: 'Flooding Decision',
-    description: 'Do you prepare the farm for possible flooding?',
-    choices: [
-      {
-        id: 'prepare',
-        text: 'Prepare the farm',
-        next: 'prepare_choice',
-      },
-      {
-        id: 'conserve',
-        text: 'Conserve resources',
-        next: 'ignore_consequence',
-      },
-    ],
-  },
-
-  prepare_choice: {
-    id: 'prepare_choice',
-    type: 'decision',
-    background: '/winter.png',
-    header: '/winter_header.png',
-    title: 'Equipment Protection',
-    description: 'Are you moving your equipment, tools, and seedlings to an elevated area to avoid water damage?',
-    choices: [
-      {
-        id: 'yes_move',
-        text: 'Yes, move everything to safety',
-        next: 'prepare_outcome',
-      },
-      {
-        id: 'no_move',
-        text: 'No, leave them in place',
-        next: 'ignore_consequence',
-      },
-    ],
-  },
-
-  prepare_outcome: {
-    id: 'prepare_outcome',
-    type: 'story',
-    background: '/winter.png',
-    header: '/winter_header.png',
-    text: `On January 14th, the rains come. Your preparations pay off: the fields stay mostly dry, and your crops survive. NASA's prediction was right.`,
-    next: null, // End of scenario for now
-  },
-
-  ignore_consequence: {
-    id: 'ignore_consequence',
-    type: 'story',
-    background: '/winter.png',
-    header: '/winter_header.png',
-    text: `You decide it's not worth the expense. On January 14th, a storm hits the coast. The fields flood, damaging equipment, tools, and seedlings.`,
-    next: null, // Could link to retry or next level
+  // Interactive Spring scenario
+  spring_intro: {
+    id: 'spring_intro',
+    type: 'interactive',
+    background: '/spring.png',
+    header: '/spring_header.png',
+    overlay: 'rain.gif',
+    bottomLeftImage: 'rock.png',
+    text: `It's mid-spring—April—and your almond trees are waking up from their winter sleep. They're entering their critical bloom and early fruit development stage, which means they're hungry for water. Problem is, the winter rains were pretty weak this year. Drought is always lurking in California, and you need to know what's actually happening beneath the surface.`,
+    showComputer: true,
+    showInitialPopup: true,
+    next: null,
   },
 };

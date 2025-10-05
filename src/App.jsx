@@ -4,6 +4,7 @@ import GameContainer from './components/ui/GameContainer';
 import WelcomeScreen from './components/screens/WelcomeScreen';
 import StoryScreen from './components/screens/StoryScreen';
 import DecisionScreen from './components/screens/DecisionScreen';
+import InteractiveScreen from './components/screens/InteractiveScreen';
 import AudioManager from './components/AudioManager';
 
 function GameContent() {
@@ -15,6 +16,11 @@ function GameContent() {
         story3: 3,
         story4: 4,
       };
+
+      // Interactive scenarios
+      if (scenario.type === 'interactive') {
+        return <InteractiveScreen key={scenario.id} scenario={scenario} />;
+      }
 
       // Decision scenarios
       if (scenario.type === 'decision') {
