@@ -274,32 +274,28 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
             </>
           )}
 
-              {isSummer && !summerChoice && (
-            // Summer initial choice
-            <>
-              <div className="mb-4">
-                <p className="font-bold mb-2">A: TIME TO ACT</p>
-                <p className="text-sm mb-3">This LST reading looks critical. Let's figure out how to cool down those trees.</p>
-                <button
-                  onClick={() => setSummerChoice('act')}
-                  className="w-full p-4 rounded border-2 text-left border-gray-300 hover:border-gray-400"
-                >
-                  <span className="text-black font-bold">Time to Act</span>
-                </button>
-              </div>
+             {isSummer && !summerChoice && (
+  // Summer initial choice
+  <div className="mb-4">
+    <div className="grid grid-cols-2 gap-4 items-stretch">
+      {/* TIME TO ACT column */}
+      <button
+        onClick={() => setSummerChoice('act')}
+        className="p-4 rounded border-2 border-gray-300 hover:border-[#4ecca3] hover:bg-[#4ecca3] hover:bg-opacity-20 transition-colors text-center"
+      >
+        <span className="text-black font-bold text-lg">Time to Act</span>
+      </button>
 
-              <div className="mb-4 border-t-2 border-gray-300 pt-4">
-                <p className="font-bold mb-2">B: HOLD STEADY</p>
-                <p className="text-sm mb-3">The temperature seems manageable for midsummer. Stick with regular monitoring and see how things develop.</p>
-                <button
-                  onClick={() => setAction('hold_steady')}
-                  className="w-full p-4 rounded border-2 text-left border-gray-300 hover:border-gray-400"
-                >
-                  <span className="text-black font-bold">Continue Regular Monitoring</span>
-                </button>
-              </div>
-            </>
-          )}
+      {/* HOLD STEADY column */}
+      <button
+        onClick={() => setAction('hold_steady')}
+        className="p-4 rounded border-2 border-gray-300 hover:border-[#4ecca3] hover:bg-[#4ecca3] hover:bg-opacity-20 transition-colors text-center"
+      >
+        <span className="text-black font-bold text-lg">Continue Regular Monitoring</span>
+      </button>
+    </div>
+  </div>
+)}
 
           {isSummer && summerChoice === 'act' && (
             // Summer sub-choices after choosing "Time to Act"
