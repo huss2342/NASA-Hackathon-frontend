@@ -10,7 +10,9 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
     // Winter scenario (January)
     if (scenario === 'january_intro') {
       if (action === 'nothing') {
-        return { money: 0, sustainability: 100 };
+        money-=100;
+        sustainability+=10;
+        return { money, sustainability};
       }
 
       if (action === 'raise') {
@@ -106,14 +108,14 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
 )}
           </div>
         ) : (
-          // Spring data
-          <div className="mb-6 text-black">
-            <p className="mb-2">Soil Moisture Analysis:</p>
-            <ul className="list-disc ml-6 space-y-1 text-sm">
-              <li>Past 7 days precipitation: 14 inches</li>
-              <li>Predicted flooding days: 0</li>
-            </ul>
-          </div>
+        <div className="mb-6 text-black">
+        <p className="mb-2">Soil Moisture Analysis:</p>
+        <ul className="list-disc ml-6 space-y-1 text-sm">
+            <li>Past 7 days precipitation: 14 inches</li>
+            <li>Predicted flooding days: 0</li>
+            <li className="text-gray-600 italic">(In the case of a drought, irrigation is beneficial. However, using water lowers your sustainability score.)</li>
+        </ul>
+        </div>
         )}
 
         <div className="mb-6">
@@ -168,21 +170,21 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
             // Spring choices
             <>
               <button
-                onClick={() => setAction('keep')}
-                className={`w-full p-4 mb-3 rounded border-2 text-left ${
-                  action === 'keep' 
-                    ? 'border-[#4ecca3] bg-[#4ecca3] bg-opacity-20' 
-                    : 'border-gray-300 hover:border-gray-400'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-black font-bold">Keep soil moisture as is</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-green-600">+10</span>
-                    <img src="/sustainability_points.png" alt="Sustainability" className="w-6 h-6" />
-                  </div>
-                </div>
-              </button>
+  onClick={() => setAction('keep')}
+  className={`w-full p-4 mb-3 rounded border-2 text-left ${
+    action === 'keep' 
+      ? 'border-[#4ecca3] bg-[#4ecca3] bg-opacity-20' 
+      : 'border-gray-300 hover:border-gray-400'
+  }`}
+>
+  <div className="flex items-center justify-between">
+    <span className="text-black font-bold">Keep soil moisture as is</span>
+    <div className="flex items-center gap-2">
+      <span className="text-green-600">+10</span>
+      <img src="/sustainability_score.png" alt="Sustainability" className="w-6 h-6" />
+    </div>
+  </div>
+</button>
 
               <button
                 onClick={() => setAction('irrigate')}

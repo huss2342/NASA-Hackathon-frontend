@@ -49,7 +49,6 @@ export const scenarios = {
     background: '/spring.png',
     header: '/spring_header.png',
     overlay: 'rain.gif',
-    bottomLeftImage: 'rock.png',
     text: `It's mid-spring—April—and your almond trees are waking up from their winter sleep. They're entering their critical bloom and early fruit development stage, which means they're hungry for water. Problem is, the winter rains were pretty weak this year. Drought is always lurking in California, and you need to know what's actually happening beneath the surface.`,
     showComputer: true,
     showInitialPopup: true,
