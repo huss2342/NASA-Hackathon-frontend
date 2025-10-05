@@ -23,8 +23,11 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
         if (raisePercent < 40) {
           localDecision = 'not_enough';
           money -= 100;
-        } else {
+        } else if (raisePercent == 40) {
           localDecision = 'enough';
+        }
+        else {
+            localDecision = 'too_much'
         }
 
         if (raisePercent === 10) sustainability = -80;
