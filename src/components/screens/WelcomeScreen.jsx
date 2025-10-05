@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useGame } from '../../context/GameContext';
+import { useGameState } from '../../context/GameStateContext';
 import Screen from '../ui/Screen';
 import PixelBackground from '../ui/PixelBackground';
 import Button from '../ui/Button';
 
 const WelcomeScreen = () => {
-  const { currentScreen, startGame } = useGame();
+  const { currentScenario, startGame } = useGameState();
   const [name, setName] = useState('');
 
   const handleStart = () => {
@@ -19,7 +19,7 @@ const WelcomeScreen = () => {
   };
 
   return (
-    <Screen active={currentScreen === 'welcome'}>
+    <Screen active={currentScenario === 'welcome'}>
       <PixelBackground opacity={0.15} />
       <h1 className="
         text-[#e94560] text-5xl 
