@@ -4,7 +4,7 @@ import { useAudio } from '../hooks/useAudio';
 
 const AudioManager = () => {
   const { musicPlaying } = useGameState();
-  const { play, pause } = useAudio('/audio/ES_country_music.mp3', 0.3);
+  const { play, pause } = useAudio('/ES_country_music.mp3', 0.3);
 
   useEffect(() => {
     if (musicPlaying) {
