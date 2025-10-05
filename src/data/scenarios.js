@@ -21,10 +21,10 @@ export const scenarios = {
     id: 'story3',
     type: 'story',
     text: 'But you remember those magical summers at the farm as a child—the smell of fresh soil, your grandmother\'s laughter in the kitchen, helping grandpa repair the old tractor. That connection to the land... to them.',
-    images: ['grandma.gif', 'grandpa.webp'],  // Array of images to crossfade
+    images: ['grandma.gif', 'grandpa.png'],  // Array of images to crossfade
     fadeDuration: 2,  // seconds per image (optional, defaults to 4)
     imageBottom: 50,
-    imageRight: 50,
+    imageRight: 150,
     imageWidth: 300,
     imageHeight:300,
     next: 'story4',
