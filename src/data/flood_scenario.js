@@ -22,7 +22,7 @@ You open the NASA Flooding Analysis Tool to check the projected flooding for Jan
   interpret_graph: {
     id: 'interpret_graph',
     type:'story',
-    text:'For January, the tool shows a median of [insert_number_of_predicted_floods] flooding days.',
+    text:'For January, the tool shows a median of 3 flooding days.',
     next:'flood_decision',
   },
 
