@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { GameProvider, useGame } from './context/GameContext';
+import GameContainer from './components/ui/GameContainer';
+import WelcomeScreen from './components/screens/WelcomeScreen';
+import StoryScreen from './components/screens/StoryScreen';
+import GameScreen from './components/screens/GameScreen';
+import AudioManager from './components/AudioManager';
 
-function App() {
-  const [count, setCount] = useState(0)
+const storyData = [
+  {
+    number: 1,
+    text: `It's been a long year. In the mail you receive rusty key and a note: "The farm is yours now, dear. I know you'll bring it back to life."`,
+    nextScreen: 'story2',
+  },
+  {
+    number: 2,
+    text: 'You have a job in New York City. A life. You can\'t just leave that behind.',
+    nextScreen: 'story3',
+  },
+  {
+    number: 3,
+    text: 'But you remember the summers at the farm as a child...the smell of fresh soil, the satisfaction of harvest. But that was a long time ago.',
+    nextScreen: 'story4',
+  },
+  {
+    number: 4,
+    text: '"What if...?" You think to yourself. You have a chance to start over, to build something real... <br><br>Welcome home, <span class="text-[#4ecca3]">{playerName}</span>.',
+    nextScreen: 'game',
+  },
+];
+
+function GameContent() {
+  const { currentScreen } = useGame();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <GameContainer>
+      <AudioManager />
+      <WelcomeScreen />
+      {storyData.map((story) => (
+        <StoryScreen
+          key={story.number}
+          storyNumber={story.number}
+          text={story.text}
+          nextScreen={story.nextScreen}
+          isActive={currentScreen === `story${story.number}`}
+        />
+      ))}
+      <GameScreen />
+    </GameContainer>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <GameProvider>
+      <GameContent />
+    </GameProvider>
+  );
+}
+
+export default App;
