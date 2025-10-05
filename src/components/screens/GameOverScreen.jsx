@@ -18,26 +18,67 @@ const GameOverScreen = ({ scenario }) => {
     resetGame();
   };
 
-  const displayText = scenario.text.replace('{playerName}', playerName);
+  // Determine overall performance tier
+  const getPerformanceTier = () => {
+    // Success: Money ≥ 40 AND Sustainability ≥ 20
+    if (money >= 40 && sustainability >= 20) {
+      return { 
+        tier: 'Success', 
+        badge: '/gold_badge.GIF',
+        color: 'text-yellow-400',
+        message: 'You effectively used NASA satellite data to balance farm profitability with environmental sustainability. Excellent data-driven decisions!'
+      };
+    }
+    // Struggled: Money < 0 OR Sustainability < -20
+    if (money < 0 || sustainability < -20) {
+      return { 
+        tier: 'Struggled', 
+        badge: '/bronze_badge.GIF',
+        color: 'text-orange-600',
+        message: 'The farm became unsustainable. NASA satellite data could have helped you balance economic needs with environmental health before reaching crisis levels.'
+      };
+    }
+    // Survived: Everything in between
+    return { 
+      tier: 'Survived', 
+      badge: '/silver_badge.GIF',
+      color: 'text-gray-400',
+      message: 'You survived but struggled to balance profits and sustainability. Better use of NASA data could have helped you optimize both economic and environmental outcomes.'
+    };
+  };
 
-  // Analyze decisions
+  // Analyze individual decisions with 3-tier system
   const analyzeDecision = (decision) => {
     const { outcome } = decision;
     const totalImpact = (outcome.money || 0) + (outcome.sustainability || 0);
     
-    if (totalImpact > 30) return { rating: 'Excellent', color: 'text-green-400', emoji: '✅' };
-    if (totalImpact > 0) return { rating: 'Good', color: 'text-blue-400', emoji: '👍' };
-    if (totalImpact > -30) return { rating: 'Poor', color: 'text-yellow-400', emoji: '⚠️' };
-    return { rating: 'Bad', color: 'text-red-400', emoji: '❌' };
+    // Success: positive total impact
+    if (totalImpact > 0) return { rating: 'Success', color: 'text-green-400', emoji: '🌟' };
+    // Struggled: significantly negative impact
+    if (totalImpact < -20) return { rating: 'Struggled', color: 'text-red-400', emoji: '❌' };
+    // Survived: neutral/slightly negative
+    return { rating: 'Survived', color: 'text-yellow-400', emoji: '⚖️' };
   };
+
+  const performanceTier = getPerformanceTier();
 
   return (
     <Screen active={currentScenario === scenario.id}>
-      <PixelBackground opacity={0.3} />
+      <PixelBackground opacity={0.3} 
+        customBackground={scenario.background}
+      />
       
       <div className="w-full h-full overflow-y-auto flex flex-col items-center py-8 px-4">
-        <div className="text-center mb-6 text-6xl z-10">
-          {isVictory ? '🎉' : '🌾'}
+        {/* Performance Badge */}
+        <div className="text-center mb-4 z-10">
+          <img 
+            src={performanceTier.badge} 
+            alt={`${performanceTier.tier} Badge`}
+            className="w-32 h-32 mx-auto mb-2"
+          />
+          <div className={`text-4xl font-bold font-['Courier_New',_monospace] ${performanceTier.color}`}>
+            {performanceTier.tier}
+          </div>
         </div>
 
         <h1 className={`
@@ -50,29 +91,49 @@ const GameOverScreen = ({ scenario }) => {
         </h1>
 
         <StoryText>
-          <div dangerouslySetInnerHTML={{ __html: displayText }} />
-        </StoryText>
+          {/* Performance Message */}
+          <div className="mb-6">
+            <p className="text-lg">
+              {performanceTier.message}
+            </p>
+          </div>
 
-        {/* Final Scores */}
-        <div className="bg-[rgba(22,33,62,0.95)] border-4 border-[#16213e] p-6 mb-6 z-10 max-w-[600px] w-full">
-          <h2 className="text-[#4ecca3] text-2xl mb-4 font-['Courier_New',_monospace] text-center">
-            📊 Final Results
-          </h2>
-          <div className="space-y-3 font-['Courier_New',_monospace] text-[#f1f1f1] text-lg">
-            <div className="flex justify-between items-center">
-              <span>💰 Money:</span>
-              <span className={`text-2xl font-bold ${money >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                ${money}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span>🌱 Sustainability:</span>
-              <span className={`text-2xl font-bold ${sustainability >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                {sustainability}
-              </span>
+          {/* Final Scores */}
+          <div className="mt-6">
+            <h2 className="text-[#4ecca3] text-2xl mb-4 text-center">
+              Final Results
+            </h2>
+            <div className="space-y-3 text-lg">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <img src="/money.png" alt="Money" className="w-6 h-6" />
+                  <span>Money:</span>
+                </div>
+                <span
+                  className={`text-2xl font-bold ${
+                    money >= 0 ? "text-green-400" : "text-red-400"
+                  }`}
+                >
+                  ${money}
+                </span>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <img src="/sustainability_icon.png" alt="Sustainability" className="w-6 h-6" />
+                  <span>Sustainability:</span>
+                </div>
+                <span
+                  className={`text-2xl font-bold ${
+                    sustainability >= 0 ? "text-green-400" : "text-red-400"
+                  }`}
+                >
+                  {sustainability}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </StoryText>
 
         {/* Decision Review */}
         {decisions.length > 0 && (

@@ -88,7 +88,8 @@ summer_intro: {
   game_over: {
     id: 'game_over',
     type: 'game_over',
-    title: 'Season Complete',
+    background: '/game_over.png',
+    // title: 'Season Complete',
     text: 'Your first growing season has come to an end, {playerName}. Let\'s see how your decisions shaped the farm\'s future...',
     canRetry: true,
   },
