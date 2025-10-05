@@ -10,9 +10,8 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
     // Winter scenario (January)
     if (scenario === 'january_intro') {
       if (action === 'nothing') {
-        money-=100;
-        sustainability+=10;
-        return { money, sustainability};
+        // return explicit scores instead of mutating undefined variables
+        return { money: -100, sustainability: 10 };
       }
 
       if (action === 'raise') {
@@ -89,7 +88,7 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
 {showGraph && (
   <div className="mt-4">
    <img
-  src="/public/flood_graph.png"
+  src="/flood_graph.png"
   alt="Flooding Graph"
   className="max-w-[300px] mx-auto rounded-lg border border-gray-300 shadow-md"
 />
