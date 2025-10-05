@@ -5,12 +5,14 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
   const [raisePercent, setRaisePercent] = useState(0);
   const [irrigationLevel, setIrrigationLevel] = useState(null);
   const [showGraph, setShowGraph] = useState(false);
+  let localDecision = null;
 
   const calculateScores = () => {
     // Winter scenario (January)
     if (scenario === 'january_intro') {
       if (action === 'nothing') {
         // return explicit scores instead of mutating undefined variables
+        localDecision = 'do_nothing';
         return { money: -100, sustainability: 10 };
       }
 
@@ -19,7 +21,10 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
         let sustainability = 0;
 
         if (raisePercent < 40) {
+          localDecision='not_enough';
           money -= 100;
+        } else {
+          localDecision='enough';
         }
 
         if (raisePercent === 10) sustainability = -80;
@@ -40,15 +45,19 @@ const ComputerModal = ({ onClose, onSubmit, scenario }) => {
     // Spring scenario
     if (scenario === 'spring_intro') {
       if (action === 'keep') {
+        localDecision = 'keep';
         return { money: 100, sustainability: 20 }; // Hidden: +100 money, +10 base + 10 shown
       }
 
       if (action === 'irrigate') {
         if (irrigationLevel === 'low') {
+          localDecision='low_irrigation';
           return { money: -50, sustainability: -10 };
         } else if (irrigationLevel === 'medium') {
+          localDecision='med_irrigation';
           return { money: -100, sustainability: -20 };
         } else if (irrigationLevel === 'high') {
+          localDecision='high_irrigation';
           return { money: -150, sustainability: -30 };
         }
       }
