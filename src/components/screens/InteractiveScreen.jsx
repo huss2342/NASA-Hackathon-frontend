@@ -49,14 +49,6 @@ const InteractiveScreen = ({ scenario }) => {
         />
       )}
 
-      {/* Bottom left image (like rock.png) */}
-      {scenario.bottomLeftImage && (
-        <img 
-          src={scenario.bottomLeftImage}
-          alt="Scene element"
-          className="absolute bottom-0 left-0 z-[3] max-w-[300px]"
-        />
-      )}
       
       {scenario.header && <SeasonHeader imageSrc={scenario.header} />}
       
@@ -64,27 +56,32 @@ const InteractiveScreen = ({ scenario }) => {
         <ComputerIcon onClick={() => setShowModal(true)} />
       )}
 
-      {/* Score display */}
-      <div className="absolute top-4 right-4 z-[100] bg-white rounded-lg p-4 border-2 border-black">
-        <div className="text-black font-bold text-sm">
-          <div>Money: ${money}</div>
-          <div>Sustainability: {sustainability}</div>
+    {/* Score display */}
+    <div className="absolute top-4 right-4 z-[100] bg-white rounded-lg p-4 border-2 border-black">
+        <div className="text-black font-bold text-sm flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+                <img src='/money.png' className="w-6 h-6" alt="Money" />
+                <span>Money: ${money}</span>
+            </div>
+            <div className="flex items-center gap-2">
+                <img src='/sustainability_score.png' className="w-6 h-6" alt="Sustainability" />
+                <span>Sustainability: {sustainability}</span>
+            </div>
         </div>
-      </div>
-
-      {/* Initial popup */}
+    </div>
       {showInitialPopup && (
         <Popup onClose={() => setShowInitialPopup(false)}>
           <p className="text-lg leading-relaxed">{scenario.text}</p>
         </Popup>
       )}
 
-      {showModal && (
-        <ComputerModal 
-          onClose={() => setShowModal(false)}
-          onSubmit={handleSubmit}
-        />
-      )}
+    {showModal && (
+    <ComputerModal 
+    onClose={() => setShowModal(false)}
+    onSubmit={handleSubmit}
+    scenario={scenario.id}
+  />
+)}
 
       {showResults && (
         <ResultsModal
