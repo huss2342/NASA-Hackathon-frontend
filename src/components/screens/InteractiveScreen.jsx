@@ -15,6 +15,7 @@ const InteractiveScreen = ({ scenario }) => {
   const [showResults, setShowResults] = useState(false);
   const [showInitialPopup, setShowInitialPopup] = useState(false);
   const [lastScores, setLastScores] = useState({ money: 0, sustainability: 0 });
+  const [lastDecision, setLastDecision] = useState(null); // ADD THIS
 
   useEffect(() => {
     if (currentScenario === scenario.id && scenario.showInitialPopup) {
@@ -22,9 +23,11 @@ const InteractiveScreen = ({ scenario }) => {
     }
   }, [currentScenario, scenario.id, scenario.showInitialPopup]);
 
-  const handleSubmit = (action, raisePercent, scores) => {
+  // UPDATE THIS - add decision parameter
+  const handleSubmit = (action, raisePercent, scores, decision) => {
     updateScores(scores.money, scores.sustainability);
     setLastScores(scores);
+    setLastDecision(decision); // STORE THE DECISION
     setShowModal(false);
     setShowResults(true);
   };
@@ -87,6 +90,7 @@ const InteractiveScreen = ({ scenario }) => {
         <ResultsModal
           moneyChange={lastScores.money}
           sustainabilityChange={lastScores.sustainability}
+          decision={lastDecision} // PASS THE DECISION
           onNext={handleNext}
         />
       )}
