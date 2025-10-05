@@ -49,14 +49,15 @@ const InteractiveScreen = ({ scenario }) => {
         />
       )}
 
-      {/* Bottom left image (like rock.png) */}
-      {scenario.bottomLeftImage && (
-        <img 
-          src={scenario.bottomLeftImage}
-          alt="Scene element"
-          className="absolute bottom-0 left-0 z-[3] max-w-[300px]"
-        />
-      )}
+    {/* Bottom left image (like rock.png) */}
+    {scenario.bottomLeftImage && (
+    <img 
+        src={scenario.bottomLeftImage}
+        alt="Scene element"
+        className="absolute bottom-0 left-0 z-[3] max-w-[300px]"
+        style={{ transform: 'translate(-20%, 16%)' }}
+    />
+    )}
       
       {scenario.header && <SeasonHeader imageSrc={scenario.header} />}
       
@@ -79,12 +80,13 @@ const InteractiveScreen = ({ scenario }) => {
         </Popup>
       )}
 
-      {showModal && (
-        <ComputerModal 
-          onClose={() => setShowModal(false)}
-          onSubmit={handleSubmit}
-        />
-      )}
+    {showModal && (
+    <ComputerModal 
+    onClose={() => setShowModal(false)}
+    onSubmit={handleSubmit}
+    scenario={scenario.id}
+  />
+)}
 
       {showResults && (
         <ResultsModal
