@@ -5,6 +5,7 @@ import WelcomeScreen from './components/screens/WelcomeScreen';
 import StoryScreen from './components/screens/StoryScreen';
 import DecisionScreen from './components/screens/DecisionScreen';
 import InteractiveScreen from './components/screens/InteractiveScreen';
+import GameOverScreen from './components/screens/GameOverScreen';
 import AudioManager from './components/AudioManager';
 
 function GameContent() {
@@ -25,6 +26,11 @@ function GameContent() {
       // Decision scenarios
       if (scenario.type === 'decision') {
         return <DecisionScreen key={scenario.id} scenario={scenario} />;
+      }
+
+      // Game over / Victory screens
+      if (scenario.type === 'game_over' || scenario.type === 'victory') {
+        return <GameOverScreen key={scenario.id} scenario={scenario} />;
       }
       
       // Story scenarios

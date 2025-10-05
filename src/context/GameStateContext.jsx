@@ -18,12 +18,13 @@ export const GameStateProvider = ({ children }) => {
   const [decisions, setDecisions] = useState([]);
   const [musicPlaying, setMusicPlaying] = useState(false);
 
-  const makeDecision = useCallback((scenarioId, choice, outcome) => {
+  const makeDecision = useCallback((scenarioId, choiceText, outcome, fullDecisionData = {}) => {
     const decision = {
       scenarioId,
-      choice,
+      choiceText,
       outcome,
       timestamp: Date.now(),
+      ...fullDecisionData, // Include any additional data like action, raisePercent, etc.
     };
     setDecisions(prev => [...prev, decision]);
   }, []);
