@@ -65,8 +65,15 @@ summer_intro: {
   text: `It's peak summer, July—and the heat is relentless. Walking through your almond orchard, you can feel the warmth radiating from the soil itself. The air feels thick, and you're worried about heat stress damaging the trees during this critical fruit development period.\n\nLocal air temperature readings don't tell the whole story. What matters is the Land Surface Temperature (LST)—the actual temperature of the canopy and soil surface where your trees are working hardest.`,
   showComputer: true,
   showInitialPopup: true,
-  next: null,
-}
+  next: 'game_over',
+},
 
-
+  // Game Over Screen
+  game_over: {
+    id: 'game_over',
+    type: 'game_over',
+    title: 'Season Complete',
+    text: 'Your first growing season has come to an end, {playerName}. Let\'s see how your decisions shaped the farm\'s future...',
+    canRetry: true,
+  },
 }
